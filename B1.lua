@@ -1,5 +1,6 @@
 local Module = {}
 
+local replicated = game:GetService('ReplicatedStorage')
 local Cached = { Bring = {} }
 local _ENV = (getgenv or getrenv or getfenv)()
 local BRING_TAG: string = _ENV._Bring_Tag or `b{math.random(80, 2e4)}t`
