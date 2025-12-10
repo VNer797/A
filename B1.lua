@@ -10,7 +10,7 @@ local hookmetamethod = hookmetamethod or (function(...) return ... end)
 local hookfunction = hookfunction or (function(...) return ... end)
 local sethiddenproperty = sethiddenproperty or (function(...) return ... end)
 
-function IsAlive(model)
+function Module.IsAlive(model)
   local hum = model:FindFirstChildOfClass("Humanoid")
   return hum and hum.Health > 0
 end
@@ -18,7 +18,7 @@ function Module.BringEnemy()
     if not _B then return end
     pcall(sethiddenproperty,plr,"SimulationRadius", math.huge)
     for _, Enemy in pairs(workspace.Enemies:GetChildren()) do
-        if not IsAlive(Enemy) then continue end
+        if not Module.IsAlive(Enemy) then continue end
         if not Enemy.PrimaryPart then continue end
         if Enemy.Parent ~= workspace.Enemies then continue end
         if Enemy:FindFirstChild("CharacterReady") == nil then continue end
