@@ -168,12 +168,14 @@ function Module.Process(Value)
     return false
 end
 function Module.ClosetEnemy()
-    if v:IsA("Model") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") then
-        local distance = (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-        if distance < shortestDistance then 
-            shortestDistance = distance
-            nearestEnemy = v
-            return nearestEnemy
+    for _, v in pairs(game.Workspace.Enemies:GetChildren()) do
+        if v:IsA("Model") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") then
+            local distance = (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+            if distance < shortestDistance then 
+                shortestDistance = distance
+                nearestEnemy = v
+                return nearestEnemy
+            end
         end
     end
     return nil
